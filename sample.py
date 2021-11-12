@@ -1,3 +1,4 @@
-# hello
+# This is a python file just for testing out GitHub
 
-# Added by Arjun
+name = input('Enter your name: ')
+print('Hi', name, '! Hello World!')
