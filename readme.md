@@ -15,6 +15,6 @@
 - We will try to complete it by the end of the current Academic year
 
 ## Current Status?
-- As of **12-11-2021**:
+As of **12-11-2021**:
 - Gathering ideas and resources for learning
 - Learning required tools for creating our application
