@@ -1,3 +1,15 @@
 Important Information:
 
 Virtual Environment Name = cs_project
+
+Database info:
+
+Username: 3bYjqEkGkW
+
+Database name: 3bYjqEkGkW
+
+Password: 0dxkWLmmr2
+
+Server: remotemysql.com
+
+Port: 3306
