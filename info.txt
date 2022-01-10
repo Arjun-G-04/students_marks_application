@@ -13,3 +13,7 @@ Password: 0dxkWLmmr2
 Server: remotemysql.com
 
 Port: 3306
+
+Superuser details:
+Username: admin
+Password: 12345
