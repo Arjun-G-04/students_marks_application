@@ -1,0 +1,7 @@
+.container-fluid .carousel .carousel-item img{
+    max-height: 250px;
+}
+
+body {
+    background-color: white;
+}
