@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'inside1.apps.Inside1Config'
 ]
 
 MIDDLEWARE = [
@@ -80,8 +81,12 @@ WSGI_APPLICATION = 'main_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sepl3iQWc0',
+        'USER': 'sepl3iQWc0',
+        'PASSWORD': 'WwVwAgjSgd',
+        'HOST': 'remotemysql.com',
+        'PORT': '3306'
     }
 }
 
