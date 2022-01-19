@@ -42,17 +42,24 @@
     </div>
 
     <div class='container border border-2 border-primary mt-3 rounded-3 shadow-lg bg-light p-4 animate__animated animate__fadeInUp animate__delay-2s'>
-        <form action="login">
+        <form action="login" method='post'>
+            {% csrf_token %}
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" placeholder="Enter email" name="email">
-                <label for="email">Email</label>
+                <input type="text" class="form-control" placeholder="Enter Username" name="username">
+                <label for="username">Username</label>
             </div>
             <div class="form-floating mb-3">
-              <input type="password" class="form-control" placeholder="Enter password" name="pswd">
+              <input type="password" class="form-control" placeholder="Enter Password" name="pswd">
               <label for="password">Password</label>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+    </div>
+
+    <div>
+        {% for m in messages %}
+        <h4>{{ m }}</h4>
+        {% endfor %}
     </div>
 
     <nav class="navbar mt-5 navbar-expand-sm bg-dark navbar-dark animate__animated animate__fadeIn">
