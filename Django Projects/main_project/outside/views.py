@@ -5,7 +5,10 @@ from django.contrib.auth.models import User, auth
 # Create your views here.
 
 def home(request):
-    return render(request, 'index.html')
+    if request.user.is_authenticated:
+        return redirect('app1/front')
+    else:
+        return render(request, 'index.html')
 
 def login(request):
     if request.method == 'POST':

@@ -41,6 +41,15 @@
         </div>
     </div>
 
+    {% if messages %}
+    <div class='my-3 mx-5 alert alert-danger alert-dismissible animate__animated animate__fadeInUp animate__delay-2s'>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        {% for m in messages %}
+        <strong>Sorry!</strong> Username and Password did not match, Try again!
+        {% endfor %}
+    </div>
+    {% endif %}
+
     <div class='container border border-2 border-primary mt-3 rounded-3 shadow-lg bg-light p-4 animate__animated animate__fadeInUp animate__delay-2s'>
         <form action="login" method='post'>
             {% csrf_token %}
@@ -54,12 +63,6 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-    </div>
-
-    <div>
-        {% for m in messages %}
-        <h4>{{ m }}</h4>
-        {% endfor %}
     </div>
 
     <nav class="navbar mt-5 navbar-expand-sm bg-dark navbar-dark animate__animated animate__fadeIn">
