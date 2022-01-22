@@ -29,9 +29,9 @@
         <div class='container border border-3 rounded-3 m-4 w-25'
             <div class="card col">
                 <div class="card-body">
-                <h4 class="card-title">{{c.name}}</h4>
-                <p class="card-text">This is {{c.name}}!</p>
-                <a href="#" class="btn btn-primary">See Marks</a>
+                <h4 class="card-title">Class {{c.std}}-{{c.sec}}</h4>
+                <p class="card-text">This is Class {{c.std}}-{{c.sec}}!</p>
+                <a href="front/{{c.code}}" class="btn btn-primary">Edit Marks</a>
                 </div>
             </div>
         {% endfor %}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class {{ std }}-{{ sec }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+    <nav class='mt-0 navbar sticky-top navbar-expand-sm bg-dark navbar-dark'>
+        <div class='container-fluid'>
+            <div class="navbar-brand">
+                <strong>Class {{ std }}-{{ sec }}</strong>
+            </div>
+            <ul class='navbar-nav'>
+                <li class="nav-item"><strong><a class="nav-link" href="/app1/front">Front</a></strong></li>
+                <li class="nav-item"><strong><a class="nav-link" href="/app1/logout">Logout</a></strong></li>
+            </ul>
+        </div>
+    </nav>
+    <div class='container-fluid p-0 mt-4'>
+        <div class="d-grid mx-2">
+            <button type='button' class='btn btn-primary btn-lg btn-block' data-bs-toggle="collapse" data-bs-target="#c1"><strong>Pending Test(s) to be added 🔽</strong></button>
+        </div>
+
+        <div id="c1" class="collapse row border border-2 rounded-3 p-4 mx-2">
+            
+            {% if not pending %}
+
+                <div class="alert alert-success">
+                    <strong>Hurray!</strong> You are up to date! No tests to be added as of now!!
+                </div>
+
+            {% else %}
+
+                {% for t in pending %}
+                <div class="list-group col">
+                    <a href="{{code}}/add/{{t.test_id}}" class="list-group-item list-group-item-action list-group-item-info"><b>{{t.test_name}}</b></a>
+                </div>
+                {% endfor %}
+            
+            {% endif %}
+
+        </div>
+    </div>
+
+    <div class='container-fluid mt-4 p-0'>
+        <div class="d-grid mt-4 mx-2">
+            <button type='button' class='btn btn-primary btn-lg btn-block' data-bs-toggle="collapse" data-bs-target="#c2"><strong>Added Tests 🔽</strong></button>
+        </div>
+
+        <div id="c2" class="collapse row border border-2 rounded-3 p-4 mx-2">
+            
+            {% if not comp %}
+
+                <div class="alert alert-warning">
+                    <strong>None!</strong> No tests added yet!
+                </div>
+
+            {% else %}
+
+                {% for t in comp %}
+                <div class="list-group col">
+                    <a href="{{code}}/view/{{t.test_id}}" class="list-group-item list-group-item-action list-group-item-info"><b>{{t.test_name}}</b></a>
+                </div>
+                {% endfor %}
+            
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>
