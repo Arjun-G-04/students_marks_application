@@ -1,4 +1,7 @@
-from tkinter import CASCADE
+# from tkinter import CASCADE
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 from django.db import models
 from django.contrib.auth.models import User
 
