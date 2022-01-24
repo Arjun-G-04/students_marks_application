@@ -80,10 +80,11 @@ def submit_test(request, code, test_id):
 
 def view_test(request, code, test_id):
     if request.user.is_authenticated and (code in User.objects.get(username=request.user.username).teacher.perm):
+        std, sec = code_to_class(code)
         test = Test.objects.get(test_id=test_id)
         marks = Marks.objects.all()
         req_marks = []
-        students = Student.objects.all().filter(std=code_to_class(code)[0])
+        students = Student.objects.all().filter(std=std, sec=sec)
         sub = Subject.objects.all().filter(sub_code=User.objects.get(username=request.user.username).teacher.subs)
         for m in marks:
             if (m.student in students) and (m.sub in sub):
