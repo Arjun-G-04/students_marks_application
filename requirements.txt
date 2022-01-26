@@ -1,4 +1,0 @@
-django
-pillow
-mysqlclient
-mysql-connector

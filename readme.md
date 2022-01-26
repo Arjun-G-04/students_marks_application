@@ -12,9 +12,12 @@
 - We want to create something which others will find useful and productive in their life. We believe thats the purpose of coding and programming - to **unleash creativity of our minds and create something beautiful**
 
 ## Timeline?
-- We will try to complete it by the end of the current Academic year
+- Completed basic app on Jan 2022
+- Future features in line for the year 2022
 
 ## Current Status?
-As of **12-11-2021**:
-- Gathering ideas and resources for learning
-- Learning required tools for creating our application
+As of **26-01-2022**:
+- The Basic Idea of the app completed!!!
+- Website: https://student-mark-app.herokuapp.com
+- Further features will be added soon if app goes into production
+- Link for Screenshots: **Yet-To-Be-Added**
