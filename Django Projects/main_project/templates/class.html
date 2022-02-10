@@ -37,8 +37,8 @@
             {% else %}
 
                 {% for t in pending %}
-                <div class="list-group col">
-                    <a href="{{code}}/add/{{t.test_id}}" class="list-group-item list-group-item-action list-group-item-info"><b>{{t.test_name}}</b></a>
+                <div class="list-group mb-2">
+                    <a href="{{code}}/add/{{t.test_id}}" class="list-group-item list-group-item-action list-group-item-danger"><b>{{t.test_name}}</b></a>
                 </div>
                 {% endfor %}
             
@@ -63,8 +63,8 @@
             {% else %}
 
                 {% for t in comp %}
-                <div class="list-group col">
-                    <a href="{{code}}/view/{{t.test_id}}" class="list-group-item list-group-item-action list-group-item-info"><b>{{t.test_name}}</b></a>
+                <div class="list-group mb-2">
+                    <a href="{{code}}/view/{{t.test_id}}" class="list-group-item list-group-item-action list-group-item-success"><b>{{t.test_name}}</b></a>
                 </div>
                 {% endfor %}
             

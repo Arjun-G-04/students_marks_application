@@ -36,6 +36,7 @@
               <th>Roll No.</th>
               <th>Subject</th>
               <th>Marks</th>
+              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -45,11 +46,47 @@
               <td>{{m.student.rollno}}</td>
               <td>{{m.sub.sub_name}}</td>
               <td>{{m.marks}}</td>
+              <td><button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#popup{{m.student.rollno}}">Edit</button></td>
             </tr>
             {% endfor %}
           </tbody>
         </table>
+    </div>
+
+
+    {% for x in marks %}
+    <div class="modal" id="popup{{x.student.rollno}}">
+      <div class="modal-dialog">
+        <div class="modal-content">
+    
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Edit Marks</h4>
+          </div>
+    
+          <!-- Modal body -->
+          <div class="modal-body">
+
+            <p>Existing marks of <b>{{x.student.name}}</b> is <b>{{x.marks}}</b></p>
+            <p>Enter updated marks: </p>
+
+            <form action='{{test.test_id}}/edit' method="post" class='was-validated'>
+              {% csrf_token %}
+                <input type="text" class="form-control" placeholder="New Marks" maxlength="4" name="{{x.student.name}}" required>
+                <div class="invalid-feedback">Please fill this.</div>
+                <div class="valid-feedback">Done.</div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+
+          </div>
+    
+        </div>
       </div>
+    </div>
+    {% endfor %}
+    
 
 </body>
 </html>
