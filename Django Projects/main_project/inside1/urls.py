@@ -8,5 +8,6 @@ urlpatterns = [
     path('front/<str:code>/add/<str:test_id>', views.add_test, name='Add Test'),
     path('front/<str:code>/add/<str:test_id>/submit', views.submit_test, name='Submit Test'),
     path('front/<str:code>/view/<str:test_id>', views.view_test, name='View Test'),
-    path('front/<str:code>/view/<str:test_id>/edit', views.edit_marks, name='Edit Marks')
+    path('front/<str:code>/view/<str:test_id>/<str:marks_id>/edit', views.edit_marks, name='Edit Marks'),
+    path('front/<str:grade>/tests', views.tests_home, name='Tests Home')
 ] 

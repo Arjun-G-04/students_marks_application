@@ -19,7 +19,7 @@
 
 <body>
 
-    <nav class='mt-0 navbar sticky-top navbar-expand-sm bg-dark navbar-dark animate__animated animate__fadeInUp'>
+    <nav class='mt-0 navbar sticky-top navbar-expand-sm bg-dark navbar-dark'>
         <div class='container-fluid'>
             <div class="navbar-brand">
                 Hi, {{ user.first_name }}!
@@ -31,20 +31,35 @@
         </div>
     </nav>
 
-    <div class='display-5 mt-4 ms-3 animate__animated animate__fadeInUp animate__delay-1s'>Your Classes: </div>
-    <div class='flexy animate__animated animate__fadeInUp animate__delay-2s'>   
+    <div class='display-5 mt-4 ms-3'>Your Classes</div>
+    <div class='flexy'>   
         {% for c in classes %}
         <div class='container border border-primary border-3 rounded-3 m-4 w-25'>
             <div class="card border border-0">
                 <div class="card-body">
                 <h4 class="card-title">Class {{c.std}}-{{c.sec}}</h4>
                 <p class="card-text">This is Class {{c.std}}-{{c.sec}}!</p>
-                <a href="front/{{c.code}}" class="btn btn-primary">Edit Marks</a>
+                <a href="front/{{c.code}}" class="btn btn-primary">Enter Class</a>
                 </div>
             </div>
         </div>
-
         {% endfor %}
     </div>
+
+    <div class='display-5 mt-4 ms-3'>Class Reports</div>
+    <div class='flexy'>   
+        {% for g in grades %}
+        <div class='container border border-dark border-3 rounded-3 m-4 w-25'>
+            <div class="card border border-0">
+                <div class="card-body">
+                <h4 class="card-title">Standard <b>{{g}}</b></h4>
+                <p class="card-text">View the test reports of Grade {{g}}!</p>
+                <a href="front/{{c.code}}" class="btn btn-dark">View</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
 </body>
 </html>

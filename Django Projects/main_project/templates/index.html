@@ -14,11 +14,11 @@
 </head>
 
 <body>
-    <div class="d-flex mt-0 p-3 bg-secondary text-white justify-content-center animate__animated animate__fadeIn animate__slow">
+    <div class="d-flex mt-0 p-3 bg-secondary text-white justify-content-center">
         <div class="display-6"><strong>Student Marks Application</strong></div>
     </div>      
 
-    <nav class='mt-0 navbar sticky-top navbar-expand-sm bg-dark navbar-dark animate__animated animate__fadeInUp'>
+    <nav class='mt-0 navbar sticky-top navbar-expand-sm bg-dark navbar-dark'>
         <div class='container-fluid'>
             <a class="navbar-brand" href="/">
                 <img src="{% static 'imgs/logo.png' %}" alt="Logo" style="width:40px;"> 
@@ -30,7 +30,7 @@
             </ul>
         </div>
     </nav>
-    <div class='container-fluid mt-0 p-0 animate__animated animate__fadeInUp animate__delay-1s'>
+    <div class='container-fluid mt-0 p-0'>
         <div class="carousel slide" data-bs-ride="carousel">  
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -42,7 +42,7 @@
     </div>
 
     {% if messages %}
-    <div class='my-3 mx-5 alert alert-danger alert-dismissible animate__animated animate__fadeInUp animate__delay-2s'>
+    <div class='my-3 mx-5 alert alert-danger alert-dismissible'>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         {% for m in messages %}
         <strong>Sorry!</strong> Username and Password did not match, Try again!
@@ -50,7 +50,7 @@
     </div>
     {% endif %}
 
-    <div class='container border border-2 border-primary mt-3 rounded-3 shadow-lg bg-light p-4 animate__animated animate__fadeInUp animate__delay-2s'>
+    <div class='container border border-2 border-primary mt-3 rounded-3 shadow-lg bg-light p-4'>
         <form action="login" method='post'>
             {% csrf_token %}
             <div class="form-floating mb-3">
@@ -65,9 +65,9 @@
         </form>
     </div>
 
-    <nav class="navbar mt-5 navbar-expand-sm bg-dark navbar-dark animate__animated animate__fadeIn">
+    <nav class="navbar mt-5 navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
-          <span class="navbar-text mx-auto">A Creation By Arjun And His Team</span>
+          <span class="navbar-text mx-auto">Developed By Arjun And His Team</span>
         </div>
     </nav>
 </body>

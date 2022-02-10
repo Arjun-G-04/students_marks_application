@@ -46,12 +46,12 @@
               <td>{{m.student.rollno}}</td>
               <td>{{m.sub.sub_name}}</td>
               <td>{{m.marks}}</td>
-              <td><button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#popup{{m.student.rollno}}">Edit</button></td>
+              <td><button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#popup{{m.student.rollno}}">&nbsp Edit &nbsp</button></td>
             </tr>
             {% endfor %}
           </tbody>
         </table>
-    </div>
+    </div> 
 
 
     {% for x in marks %}
@@ -70,7 +70,7 @@
             <p>Existing marks of <b>{{x.student.name}}</b> is <b>{{x.marks}}</b></p>
             <p>Enter updated marks: </p>
 
-            <form action='{{test.test_id}}/edit' method="post" class='was-validated'>
+            <form action='{{test.test_id}}/{{x.id}}/edit' method="post" class='was-validated'>
               {% csrf_token %}
                 <input type="text" class="form-control" placeholder="New Marks" maxlength="4" name="{{x.student.name}}" required>
                 <div class="invalid-feedback">Please fill this.</div>

@@ -18,11 +18,15 @@ def front(request):
     if request.user.is_authenticated:
         l = classes(request)
         classes_class = []
+        grades = []
         for i in l:
             c = Class()
             c.std, c.sec, c.code = i
-            classes_class.append(c)
-        return render(request, 'front.html', {'classes':classes_class})
+            if c.std not in grades:
+                grades.append(c.std)
+            classes_class.append(c) 
+        
+        return render(request, 'front.html', {'classes':classes_class, 'grades':grades}) 
     else:
         return render(request, 'oops.html')
 
@@ -90,6 +94,16 @@ def view_test(request, code, test_id):
             if (m.student in students) and (m.sub in sub):
                 req_marks.append(m)
         return render(request, 'view_test.html', {'test':test, 'marks':req_marks, 'code':code})
+
+def edit_marks(request, test_id, marks_id, code):
+    mark = Marks.objects.get(id=int(marks_id))
+    mark.marks = request.POST[mark.student.name]
+    mark.save()
+    return redirect('/app1/front/' + code + '/view/' + test_id)
+
+def tests_home(request, grade):
+    
+    pass
 
 def logout(request):
     auth.logout(request)
