@@ -119,6 +119,14 @@ def tests_home(request, grade):
     else:
         return render(request, 'oops.html')
 
+def test_report(request, grade, test_id):
+    test = Test.objects.get(test_id = test_id)
+    marks = Marks.objects.all().filter(test=test)
+    classes = []
+    for i in marks:
+        if i.student.sec:
+            pass
+    return render(request, 'oops.html')
 
 def logout(request):
     auth.logout(request)
