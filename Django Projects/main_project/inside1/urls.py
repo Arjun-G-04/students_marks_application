@@ -10,5 +10,5 @@ urlpatterns = [
     path('front/<str:code>/view/<str:test_id>', views.view_test, name='View Test'),
     path('front/<str:code>/view/<str:test_id>/<str:marks_id>/edit', views.edit_marks, name='Edit Marks'),
     path('front/<str:grade>/tests', views.tests_home, name='Tests Home'),
-    path('front/<str:grade>/tests/report/<str:test_id>', views.test_report, name='Test Report')
+    path('front/<str:grade>/tests/report/<str:test_id>/<str:sec>', views.test_report, name='Test Report')
 ] 

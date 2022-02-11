@@ -31,17 +31,22 @@
         <table class='table table-striped table-hover '>
           <thead class="table-warning">
             <tr>
-              <th>No.</th>
-              <th>Test Name</th>
-              <th>View</th>
+              <th><span class="display-6">No.</span></th>
+              <th><span class="display-6">Test Name</span></th>
+              <th><span class="display-6">View</span></th>
             </tr>
           </thead>
           <tbody>
-            {% for n, t in tests %}
+            {% for n, t, sec in tests %}
             <tr>
-              <td class="">{{n}}</td>
-              <td class="">{{t.test_name}}</td>
-              <td class=""><a href="tests/report/{{t.test_id}}" class="btn btn-outline-primary btn-sm">&nbsp View &nbsp</a></td>
+              <td class=""><h5>{{n}}</h5></td>
+              <td class=""><h5>{{t.test_name}}</h5></td>
+              <td class="">
+              {% for s in sec %}
+                <a href="tests/report/{{t.test_id}}/{{s}}" class="btn btn-outline-primary">{{grade}}-{{s}}</a>
+              {% endfor %}
+                <a href="tests/report/{{t.test_id}}/all" class="btn btn-outline-primary">All</a>
+              </td>
             </tr>
             {% endfor %}
           </tbody>

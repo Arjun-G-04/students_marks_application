@@ -112,20 +112,26 @@ def tests_home(request, grade):
         n = 1
         List = []
         for i in tests:
-            List.append((str(n), i))
+            marks = Marks.objects.all().filter(test=i)
+            sec = []
+            for m in marks:
+                if m.student.sec not in sec:
+                    sec.append(m.student.sec)
+            List.append((str(n), i, sec))
             n += 1
         print(List)
-        return render(request, 'tests_home.html', {'tests':List, 'grade':grade})
+        return render(request, 'tests_home.html', {'tests':List, 'grade':grade, 'sec':sec})
     else:
         return render(request, 'oops.html')
 
-def test_report(request, grade, test_id):
+def test_report(request, grade, test_id, sec):
     test = Test.objects.get(test_id = test_id)
     marks = Marks.objects.all().filter(test=test)
     classes = []
     for i in marks:
-        if i.student.sec:
-            pass
+        if i.student.sec in classes:
+            classes.append(i.student.sec)
+                        
     return render(request, 'oops.html')
 
 def logout(request):
