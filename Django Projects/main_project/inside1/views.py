@@ -94,16 +94,31 @@ def view_test(request, code, test_id):
             if (m.student in students) and (m.sub in sub):
                 req_marks.append(m)
         return render(request, 'view_test.html', {'test':test, 'marks':req_marks, 'code':code})
+    else:
+        return render(request, 'oops.html')
 
 def edit_marks(request, test_id, marks_id, code):
-    mark = Marks.objects.get(id=int(marks_id))
-    mark.marks = request.POST[mark.student.name]
-    mark.save()
-    return redirect('/app1/front/' + code + '/view/' + test_id)
+    if request.user.is_authenticated and (code in User.objects.get(username=request.user.username).teacher.perm):
+        mark = Marks.objects.get(id=int(marks_id))
+        mark.marks = request.POST[mark.student.name]
+        mark.save()
+        return redirect('/app1/front/' + code + '/view/' + test_id)
+    else:
+        return render(request, 'oops.html')
 
 def tests_home(request, grade):
-    
-    pass
+    if request.user.is_authenticated and (grade in class_alone(request)):
+        tests = Test.objects.all().filter(test_class=grade)
+        n = 1
+        List = []
+        for i in tests:
+            List.append((str(n), i))
+            n += 1
+        print(List)
+        return render(request, 'tests_home.html', {'tests':List, 'grade':grade})
+    else:
+        return render(request, 'oops.html')
+
 
 def logout(request):
     auth.logout(request)
