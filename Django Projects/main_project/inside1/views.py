@@ -1,5 +1,6 @@
 import http
 from http.client import HTTPResponse
+from msilib import type_string
 import re
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -119,20 +120,20 @@ def tests_home(request, grade):
                     sec.append(m.student.sec)
             List.append((str(n), i, sec))
             n += 1
-        print(List)
         return render(request, 'tests_home.html', {'tests':List, 'grade':grade, 'sec':sec})
     else:
         return render(request, 'oops.html')
 
 def test_report(request, grade, test_id, sec):
-    test = Test.objects.get(test_id = test_id)
-    marks = Marks.objects.all().filter(test=test)
-    classes = []
-    for i in marks:
-        if i.student.sec in classes:
-            classes.append(i.student.sec)
-                        
-    return render(request, 'oops.html')
+    if sec != 'all':
+        test = Test.objects.get(test_id = test_id)
+        marks_raw = Marks.objects.all().filter(test_id=test_id)
+        marks_req = []
+        for m in marks_raw:
+            if m.student.sec == sec:
+                marks_req.append(m)
+
+        return render(request, 'report.html')
 
 def logout(request):
     auth.logout(request)
