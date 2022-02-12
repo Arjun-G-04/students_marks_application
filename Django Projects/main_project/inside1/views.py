@@ -135,7 +135,39 @@ def test_report(request, grade, test_id, sec):
             if m.student.sec == sec:
                 marks_req.append(m)
         
-        return render(request, 'report.html')
+        max_marks = eval(test.max_marks)
+        sub_codes = eval(test.test_subs)
+        
+        # Final Table 
+        subs = []
+        for i in sub_codes:
+            s = Subject.objects.get(sub_code=str(i))
+            subs.append(s)
+
+        head = ('Roll No.', 'Name')
+
+        for sub in subs:
+            s1 = sub.sub_name
+            s2 = f'({max_marks[i]})'
+            head += (s1+s2,)
+        head += ('Total(500)', 'Rank', 'Percentile')
+
+        rows = []
+        students = Student.objects.all().filter(std = grade, sec = sec)
+        for s in students:
+            row = (s.rollno, s.name)
+            total = 0
+            for sub in subs:
+                try:
+                    m = Marks.objects.get(test=test,sub=sub,student=s)
+                    total += float(m.marks)
+                    row += (m.marks,)
+                except:
+                    row += ('-',)
+            row += (str(total),)
+            rows.append(row)
+        print(head, rows)
+        return render(request, 'report.html', {'test':test, 'sec':sec})
 
 def logout(request):
     auth.logout(request)
