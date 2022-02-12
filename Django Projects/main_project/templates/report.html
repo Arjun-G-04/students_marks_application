@@ -16,54 +16,185 @@
     }
 </style>
 
-<body>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
 
+    <div id="section1">
+    
     <nav class='mt-0 navbar sticky-top navbar-expand-sm bg-dark navbar-dark'>
         <div class='container-fluid'>
             <div class="navbar-brand">
                 <strong>Test Name</strong>
             </div>
             <ul class='navbar-nav'>
+                <li class="nav-item"><strong><a class="nav-link" href="#section1">Overview</a></strong></li>
+                <li class="nav-item"><strong><a class="nav-link" href="#section2">Maths</a></strong></li>
+                <li class="nav-item"><strong><a class="nav-link" href="#section3">Marks</a></strong></li>
                 <li class="nav-item"><strong><a class="nav-link" href="/app1/front">Front</a></strong></li>
                 <li class="nav-item"><strong><a class="nav-link" href="/app1/logout">Logout</a></strong></li>
             </ul>
         </div>
     </nav>
-
+       
     <div class="mt-4 mx-4 p-5 bg-primary text-white rounded">
         <h1>Test Name</h1>
         <h4>This is Test Info</h4>
     </div>
+    
+    <div class='display-5 mt-4 ms-4'><strong>Overview</strong></div>
 
     <div class='flexy'>   
-            <div class="card m-4 shadow-lg text-white bg-success rounded-3" style="width:300px">
+            <div class="card mt-4 mx-3 shadow-lg text-white bg-success rounded-3" style="width:300px">
                 <div class="card-body">
                 <span class="card-title display-4"><b>95%</b></span>
                 <h5 class="card-text"><b>PASSED</b> the exam which is <b>10</b> students</h5>
                 </div>
             </div>
 
-            <div class="card m-4 shadow-lg text-white bg-success rounded-3" style="width:300px">
+            <div class="card mt-4 mx-3 shadow-lg text-white bg-success rounded-3" style="width:300px">
                 <div class="card-body">
                 <span class="card-title display-4"><b>75%</b></span>
-                <h5 class="card-text">or <b>30</b> marks was the average score</h5>
+                <h5 class="card-text">or <b>300</b> marks was the average score</h5>
                 </div>
             </div>
 
-            <div class="card m-4 shadow-lg text-white bg-success rounded-3" style="width:300px">
+            <div class="card mt-4 mx-3 shadow-lg text-white bg-success rounded-3" style="width:300px">
                 <div class="card-body">
                 <span class="card-title display-4"><b>460</b></span>
                 <h5 class="card-text">out of <b>500</b> was the highest score</h5>
                 </div>
             </div>
 
-            <div class="card m-4 shadow-lg text-white bg-success rounded-3" style="width:300px">
+            <div class="card mt-4 mx-3 shadow-lg text-white bg-success rounded-3" style="width:300px">
                 <div class="card-body">
                 <span class="card-title display-4"><b>5%</b></span>
-                <h5 class="card-text">scored above <b>90%</b></h5>
+                <h5 class="card-text">or <b>10</b> students scored above <b>90%</b></h5>
+                </div>
+            </div>
+            
+            <div class="card mt-4 mx-3 shadow-lg text-white bg-danger rounded-3" style="width:300px">
+                <div class="card-body">
+                <span class="card-title display-4"><b>5%</b></span>
+                <h5 class="card-text"><b>FAILED</b> the exam which is <b>5</b> students</h5>
+                </div>
+            </div>
+
+            <div class="card mt-4 mx-3 shadow-lg text-white bg-danger rounded-3" style="width:300px">
+                <div class="card-body">
+                <span class="card-title display-4"><b>20%</b></span>
+                <h5 class="card-text">or <b>10</b> students scored below <b>50%</b></h5>
+                </div>
+            </div>
+
+            <div class="card mt-4 mx-3 shadow-lg text-white bg-success rounded-3" style="width:300px">
+                <div class="card-body">
+                <span class="card-title display-5"><b>English</b></span>
+                <h5 class="card-text">was the most scoring</h5>
+                </div>
+            </div>
+
+            <div class="card mt-4 mx-3 shadow-lg text-white bg-danger rounded-3" style="width:300px">
+                <div class="card-body">
+                <span class="card-title display-5"><b>Chemistry</b></span>
+                <h5 class="card-text">was the least scoring</h5>
                 </div>
             </div>
     </div>
+    </div>
 
+    <div id="section2">
+        <div class='display-5 mt-4 ms-4'><strong>Maths</strong></div>
+
+        <div class='flexy'>   
+            <div class="card mt-4 mx-3 shadow-lg text-white bg-success rounded-3" style="width:300px">
+                <div class="card-body">
+                <span class="card-title display-4"><b>99%</b></span>
+                <h5 class="card-text"><b>PASSED</b> Maths which is <b>15</b> students</h5>
+                </div>
+            </div>
+
+            <div class="card mt-4 mx-3 shadow-lg text-white bg-danger rounded-3" style="width:300px">
+                <div class="card-body">
+                <span class="card-title display-4"><b>1%</b></span>
+                <h5 class="card-text"><b>FAILED</b> Maths which is <b>2</b> students</h5>
+                </div>
+            </div>
+
+            <div class="card mt-4 mx-3 shadow-lg text-white bg-success rounded-3" style="width:300px">
+                <div class="card-body">
+                <span class="card-title display-4"><b>90%</b></span>
+                <h5 class="card-text">or <b>37</b> marks was the average score in Maths</h5>
+                </div>
+            </div>
+
+            <div class="card mt-4 mx-3 shadow-lg text-white bg-success rounded-3" style="width:300px">
+                <div class="card-body">
+                <span class="card-title display-4"><b>39</b></span>
+                <h5 class="card-text">out of <b>40</b> was the highest score in Maths</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-2">
+            <div class='display-6 mt-4 mx-auto'>Top Scorers</div>
+        </div>
+
+        <div class="container mt-2">            
+            <table class='table table-striped table-bordered table-hover '>
+              <thead>
+                <tr>
+                  <th>Place</th>
+                  <th>Name</th>
+                  <th>Class</th>
+                  <th>Marks(40)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1st</td>
+                  <td>You know who</td>
+                  <td>12-B</td>
+                  <td>39</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div id="section3">
+        <div class='display-5 mt-4 ms-4'><strong>Marks</strong></div>
+        <div class="container mt-4">            
+            <table class='table table-striped table-bordered table-hover '>
+              <thead>
+                <tr>
+                  <th>Roll No.</th>
+                  <th>Name</th>
+                  <th>English(40)</th>
+                  <th>Physics(40)</th>
+                  <th>Chemistry(40)</th>
+                  <th>Maths(40)</th>
+                  <th>Computer Science(40)</th>
+                  <th>Total(500)</th>
+                  <th>Rank</th>
+                  <th>Percentile</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>12B02</td>
+                  <td>Some</td>
+                  <td>35</td>
+                  <td>26</td>
+                  <td>20</td>
+                  <td>30</td>
+                  <td>35</td>
+                  <td>380</td>
+                  <td>12</td>
+                  <td>80.23</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 </html>

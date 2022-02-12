@@ -44,11 +44,12 @@ def class_view(request, code):
                     tests1.append(j)
         pending_tests = []
         comp_tests = []
+        sub = Subject.objects.get(sub_code=User.objects.get(username=request.user.username).teacher.subs)
         for i in tests1:
             marks = Marks.objects.all().filter(test=i)
             req_marks = []
             for m in marks:
-                if m.student.std == std and m.student.sec == sec:
+                if m.student.std == std and m.student.sec == sec and m.sub == sub:
                     req_marks.append(m)
             if not req_marks:
                 pending_tests.append(i)
@@ -62,7 +63,8 @@ def add_test(request, code, test_id):
     if request.user.is_authenticated and (code in User.objects.get(username=request.user.username).teacher.perm):
         test = Test.objects.get(test_id = test_id)
         students = Student.objects.all().filter(std=code_to_class(code)[0], sec=code_to_class(code)[1])
-        return render(request, 'add_test.html', {'test':test, 'students':students, 'code':code})
+        sub = Subject.objects.get(sub_code=User.objects.get(username=request.user.username).teacher.subs)
+        return render(request, 'add_test.html', {'test':test, 'students':students, 'code':code, 'subject':sub})
     else:
         return render(request, 'oops.html')
 
@@ -132,7 +134,7 @@ def test_report(request, grade, test_id, sec):
         for m in marks_raw:
             if m.student.sec == sec:
                 marks_req.append(m)
-
+        
         return render(request, 'report.html')
 
 def logout(request):
