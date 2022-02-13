@@ -15,6 +15,17 @@ class Class():
     sec : str
     code : str
 
+class sub_view():
+    pass_per : int
+    fail_per : int
+    avg_per : int
+    passno : int
+    failno : int
+    avg : int
+    highest : int
+    total : int
+    marks : list 
+
 def front(request):
     if request.user.is_authenticated:
         l = classes(request)
@@ -148,26 +159,77 @@ def test_report(request, grade, test_id, sec):
 
         for sub in subs:
             s1 = sub.sub_name
-            s2 = f'({max_marks[i]})'
+            s2 = f'({max_marks[int(sub.sub_code)]})'
             head += (s1+s2,)
-        head += ('Total(500)', 'Rank', 'Percentile')
 
         rows = []
         students = Student.objects.all().filter(std = grade, sec = sec)
         for s in students:
             row = (s.rollno, s.name)
             total = 0
+            total_max = 0
             for sub in subs:
                 try:
                     m = Marks.objects.get(test=test,sub=sub,student=s)
-                    total += float(m.marks)
+                    total += round((float(m.marks)/max_marks[int(sub.sub_code)])*100, 0)
+                    total_max += 100
                     row += (m.marks,)
                 except:
                     row += ('-',)
             row += (str(total),)
             rows.append(row)
-        print(head, rows)
-        return render(request, 'report.html', {'test':test, 'sec':sec})
+        head += (f'Total({total_max})', 'Rank', 'Percentile')
+
+        for t in rows:
+            status = 'Pass'
+            for sub in subs:
+                search = sub.sub_name + f'({max_marks[int(sub.sub_code)]})'
+                if t[head.index(search)]  != '-':
+                    if float(t[head.index(search)]) < (0.33*max_marks[int(sub.sub_code)]):
+                        status = 'Fail'
+            rows[rows.index(t)] = t + (status,)
+        
+        # Calc. Overall Stats
+        no_pass = 0
+        no_fail = 0
+        no_abv_90 = 0
+        no_blw_50 = 0
+        total_marks = []
+        total_sum = 0
+        for r in rows:
+            total_marks.append(float(r[head.index(f'Total({total_max})')]))
+            total_sum += float(r[head.index(f'Total({total_max})')])
+            if r[-1] == 'Pass':
+                no_pass += 1
+            else:
+                no_fail += 1
+            if float(r[-2]) >= (0.90*total_max):
+                no_abv_90 += 1
+            if float(r[-2]) < (0.50*total_max):
+                no_blw_50 += 1
+        avg_mark = round((total_sum / len(rows)), 0)
+        highest_mark = max(total_marks)
+
+        # Subwise stats
+        return render(
+            request, 'report.html', 
+            {
+                'test':test, 
+                'sec':sec,
+                'pass_per':int(round((no_pass/len(rows))*100, 0)),
+                'fail_per':int(round((no_fail/len(rows))*100, 0)),
+                'avg_per':int(round((avg_mark/total_max)*100, 0)),
+                'abv90_per':int(round((no_abv_90/len(rows))*100, 0)),
+                'blw50_per':int(round((no_blw_50/len(rows))*100, 0)),
+                'passno':no_pass,
+                'failno':no_fail,
+                'avg':int(avg_mark),
+                'highest':int(highest_mark),
+                'total':int(total_max),
+                'abv90':no_abv_90,
+                'blw50':no_blw_50
+            }
+        )
 
 def logout(request):
     auth.logout(request)
